@@ -8,7 +8,7 @@ public class NumberCheck {
 	}
 	
 	public static boolean check(String number) {
-		
+		return false;
 	}
 
 }
