@@ -29,10 +29,11 @@ public class NumberCheck {
 //		int firstInt = Integer.valueOf(firstNum);
 //		System.out.println(firstInt);
 		
-		System.out.println(check("41032111"));
+		System.out.println(check("01230"));
 	}
 	
 	public static boolean check(String number) {
+		number = number.replaceFirst("^0+(?!$)", ""); //uses neg-lookahead to remove 0's, until it finds a non-zero; then stops replacing
 		int[] newNumDigits = toIntArray(number);
 		int crossSum = 0;
 		
@@ -55,7 +56,6 @@ public class NumberCheck {
 			String charHolder = input.substring(i, i+1); //it's still a string, but only contains a char
 			digits[i] = Integer.valueOf(charHolder); //converts the "digit" to an actual integer
 		}
-		
 		for (int j = 0; j < digits.length; j++) {
 			if (j % 2 == 0) {
 				if (digits[j] * 2 >= 10) { //
