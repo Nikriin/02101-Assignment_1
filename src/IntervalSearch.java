@@ -9,12 +9,6 @@ public class IntervalSearch {
 		
 		awaitInput(console, input);
 		
-		if (!(input[0] <= input[1])) {
-			int temp = input[0];
-			input[0] = input[1];
-			input[1] = temp;
-		}
-		
 		System.out.println(intervalContains(input[0], input[1], input[2]));
 		
 		console.close();
@@ -31,10 +25,29 @@ public class IntervalSearch {
 	public static boolean intervalContains(int g1, int g2, int b) {
 		boolean outcome = false;
 		
+		if (g1 > g2) {
+			int temp = g1;
+			g1 = g2;
+			g2 = temp;
+		}
+		
 		for (int i = 0; i <= g2; i++) {
+			double operator;
 			
-			if (Math.pow(b, i) >= g1 && Math.pow(b, i) <= g2) {
+			switch (i) {
+				case 0:
+					operator = 0;
+					
+				case 1:
+					operator = b;
+					
+				default:
+					operator = Math.pow(b, i);
+			}
+			
+			if (operator >= g1 && operator <= g2) {
 				outcome = true;
+				break;
 			}
 		}
 		
