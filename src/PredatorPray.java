@@ -6,7 +6,7 @@ import java.awt.Point;
 public class PredatorPray {
 	
 	public static void main(String[] args) {
-		runSimulation(23, 3, 100);
+		runSimulation(20, 3, 100);
 	}
 	
 	
@@ -20,8 +20,8 @@ public class PredatorPray {
 		Random rand = new Random();
 		
 		//random starting positions of prey and predator
-		Point prey = new Point(RNG(rand, n/2), RNG(rand, n/2));
-		Point predator = new Point(RNG(rand, n/2), RNG(rand, n/2));
+		Point prey = new Point(rand.nextInt(n+1), rand.nextInt(n+1));
+		Point predator = new Point(rand.nextInt(n+1), rand.nextInt(n+1));
 		
 		int mover = RNG(rand, s); //generates a new value to add to the beasts
 		
@@ -29,7 +29,7 @@ public class PredatorPray {
 		System.out.println();
 		
 		for (int i = 1; i <= t; i++) {
-			moveBeast(prey, predator, mover, s, i, n/2); //since prey moves first, then modulo 2 can itself switch between beasts to move
+			moveBeast(prey, predator, mover, s, i, n); //since prey moves first, then modulo 2 can itself switch between beasts to move
 			mover = RNG(rand, s); //generates a new random mover-value
 			
 			printPositions(prey, predator); //task specifies that the positions of both beasts are printed "after each move"
@@ -54,14 +54,14 @@ public class PredatorPray {
 			prey.y += mover; //same value is added to *both* coordinates, as was expressly specified in the task
 			
 			//adding random values to the coords means the coords might land out-of-bounds. Therefore this is checked and prey is placed on the edge, if out-of-bounds
-			if (prey.x < -gridSize) {
-				prey.x = -gridSize;
+			if (prey.x < 0) {
+				prey.x = 0;
 			} else if (prey.x > gridSize) {
 				prey.x = gridSize;
 			}
 			
-			if (prey.y < -gridSize) {
-				prey.y = -gridSize;
+			if (prey.y < 0) {
+				prey.y = 0;
 			} else if (prey.y > gridSize) {
 				prey.y = gridSize;
 			}
@@ -98,7 +98,7 @@ public class PredatorPray {
 	}
 	
 	public static void printPositions(Point prey, Point predator) { //used to keep the for-loop for moves neat and tidy
-		System.out.println("[" + prey.x + ";" + prey.y + "] [" + predator.x + ";" + predator.y + "]");
+		System.out.println("[" + prey.x + ";" + prey.y + "]	[" + predator.x + ";" + predator.y + "]");
 	}
 	
 }

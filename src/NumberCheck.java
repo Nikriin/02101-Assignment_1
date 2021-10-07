@@ -1,9 +1,11 @@
 
+import java.util.Arrays;
+
 public class NumberCheck {
 
 	public static void main(String[] args) {
 		
-		System.out.println(check("01230"));
+		System.out.println(check("23485798846345435787683654535454836783548787374"));
 		
 	}
 	
@@ -33,7 +35,7 @@ public class NumberCheck {
 		}
 		for (int j = 0; j < digits.length; j++) {
 			if (j % 2 == 0) {
-				if (digits[j] * 2 >= 10) { //
+				if (digits[j] * 2 >= 10) {
 				newDigits[j] = ((digits[j] * 2) % 10) + 1;
 				} else {
 					newDigits[j] = (digits[j] * 2);
