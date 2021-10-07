@@ -12,7 +12,7 @@ public class PredatorPrayTeleport {
 		System.out.println("n=" + n + " s=" + s + " t=" + t);
 		if (n <= 0 || s <= 1 || t < 0) { //'s' must now be 2 or more, therefore <= 1 is an illegal parameter
 			System.out.println("Illegal Parameters!");
-			System.exit(0);
+			System.exit(0); //this terminates the program
 		}
 		
 		Random rand = new Random();
@@ -20,8 +20,6 @@ public class PredatorPrayTeleport {
 		//random starting positions of prey and predator
 		Point prey = new Point(rand.nextInt(n+1), rand.nextInt(n+1));
 		Point predator = new Point(rand.nextInt(n+1), rand.nextInt(n+1));
-		
-//		int mover = RNG(rand, s); //generates a new value to add to the beasts
 		
 		printPositions(prey, predator); //prints the initial positions of the beasts
 //		System.out.println();
@@ -49,7 +47,7 @@ public class PredatorPrayTeleport {
 		int move = RNG(rand, s);
 		
 		if (turn % 2 == 1) { //checks whether it's prey's or predator's turn to move
-			if (prey.x % 2 == 0 && prey.y % 2 == 0) { //first teleport right away, if possible
+			if (prey.x % s == 0 && prey.x != 0 && prey.y % s == 0 && prey.y != 0) { //first teleport right away, if possible
 				prey.x = rand.nextInt(n+1);
 				prey.y = rand.nextInt(n+1);
 				
