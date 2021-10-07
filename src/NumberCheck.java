@@ -1,6 +1,4 @@
 
-import java.util.Arrays;
-
 public class NumberCheck {
 
 	public static void main(String[] args) {
@@ -34,7 +32,7 @@ public class NumberCheck {
 			digits[i] = Integer.valueOf(charHolder); //converts the "digit" to an actual integer
 		}
 		for (int j = 0; j < digits.length; j++) {
-			if (j % 2 == 0) {
+			if (j % 2 == 0) { //deal only with odd numbers
 				if (digits[j] * 2 >= 10) {
 				newDigits[j] = ((digits[j] * 2) % 10) + 1;
 				} else {
