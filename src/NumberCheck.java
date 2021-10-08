@@ -9,7 +9,7 @@ public class NumberCheck {
 	
 	public static boolean check(String number) {
 		number = number.replaceFirst("^0+(?!$)", ""); //uses neg-lookahead to remove 0's, until it finds a non-zero; then stops replacing
-		int[] newNumDigits = toIntArray(number);
+		int[] newNumDigits = findNewDigits(number); //computes the new digits from 'number' and returns an int[] of the new digits
 		int crossSum = 0;
 		
 		for (int i = 0; i < newNumDigits.length; i++) { //computes the cross sum
@@ -23,7 +23,7 @@ public class NumberCheck {
 		}
 	}
 	
-	public static int[] toIntArray(String input) {
+	public static int[] findNewDigits(String input) {
 		int[] digits = new int[input.length()]; //will contain the original digits
 		int[] newDigits = new int[digits.length]; //will contain the digits after altering them
 		
